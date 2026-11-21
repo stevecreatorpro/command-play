@@ -1,0 +1,64 @@
+name: command_play
+description: Offline, fully voice-controlled media player for mobile and desktop.
+publish_to: none
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.3.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Playback (libmpv / FFmpeg, hardware decoding on all platforms)
+  media_kit: ^1.1.10
+  media_kit_video: ^1.2.4
+  media_kit_libs_video: ^1.0.4
+
+  # Library index (SQLite with FTS5 bundled)
+  sqlite3: ^2.4.0
+  sqlite3_flutter_libs: ^0.5.20
+  path: ^1.9.0
+  path_provider: ^2.1.2
+
+  # Voice
+  vosk_flutter: ^0.3.48      # offline STT (mic streaming is Android-first; see README)
+  permission_handler: ^12.0.1  # modern Android embedding (v10 used removed Registrar API)
+  flutter_tts: ^4.0.2        # offline spoken feedback via OS TTS
+
+  # UI helpers
+  file_picker: ^8.0.0
+  record: ^7.2.0
+
+# Patched copy of vosk_flutter so it builds with Android Gradle Plugin 8+.
+dependency_overrides:
+  vosk_flutter:
+    path: third_party/vosk_flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/models/
+
+flutter_launcher_icons:
+  image_path: assets/icon/app_icon.png
+  android: true
+  min_sdk_android: 24
+  adaptive_icon_background: "#120E22"
+  adaptive_icon_foreground: assets/icon/app_icon_foreground.png
+  adaptive_icon_foreground_inset: 16
+  ios: true
+  remove_alpha_ios: true
+  windows:
+    generate: true
+    image_path: assets/icon/app_icon.png
+    icon_size: 256
+  macos:
+    generate: true
+    image_path: assets/icon/app_icon.png

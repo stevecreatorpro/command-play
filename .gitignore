@@ -1,0 +1,20 @@
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+.vscode/
+
+# Compiled test builds (rebuild with flutter build, or see GitHub Releases)
+release/
+
+# Large offline speech models: download separately (see assets/models/README.txt)
+assets/models/*.zip
+
+# Machine-specific / secrets
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
